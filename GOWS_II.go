@@ -35,4 +35,11 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	fmt.Fprintf(w, "%s", p.Body)
 }
+func main() {
+	flag.Parse()
 
+	http.HandleFunc("/", rootHandler)
+	
+	Port := ":" + strconv.Itoa(*port)
+	http.ListenAndServe(Port, nil)
+}
