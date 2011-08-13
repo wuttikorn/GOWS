@@ -10,7 +10,7 @@ import (
 	"strconv"
 )
 
-var port *int = flag.Int("port")
+var port *int = flag.Int("port", 8080, "Port for web server to listen on. Default 8080.")
 
 type Page struct {
 	Body  []byte
