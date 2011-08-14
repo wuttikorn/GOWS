@@ -27,4 +27,12 @@ func loadPage(w http.ResponseWriter, r *http.Request)(*Page, os.Error) {
 	}
 	return &Page{Body: body}, nil
 }
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	p, err := loadPage(w, r)
+	if err != nil {
+		http.NotFound(w, r)
+		return
+	}
+	fmt.Fprintf(w, "%s", p.Body)
+}
 
